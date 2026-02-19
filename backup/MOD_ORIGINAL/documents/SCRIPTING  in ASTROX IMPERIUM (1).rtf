@@ -1,0 +1,509 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red128\green128\blue128;}
+{\*\generator Riched20 10.0.17134}{\*\mmathPr\mnaryLim0\mdispDef1\mwrapIndent1440 }\viewkind4\uc1 
+\pard\widctlpar\sl276\slmult1\cf1\b\i\f0\fs36 ASTROX IMPERIUM SCRIPTING\par
+\b0\i0\fs20 A Complete Guide to Scripting the Astrox Imperium Engine.\par
+By: Jace Masula 2018\par
+\par
+\b\i The SCRIPT.TXT file.\par
+\b0\i0 A scripting file is nothing more than a basic text file that contains a list of commands that the game engine can recognize and use to perform various tasks during gameplay. You can name these script files anything you want, and it is a good idea to make use of good naming conventions when labeling these script files. \par
+Good file names:  \b\i basic_random_chat_1_a.txt\b0\i0  or \b\i quest_save_timmy.txt\par
+\b0\i0 Bad file names: \b\i Some-Chat.txt\b0\i0  and \b\i Another-chat.txt\par
+\b0\par
+\i0 It is good practice to separate each mini-quest into it\rquote s own scripting file. This will help you to better organize your scripts. You can also create additional folders within the scripting folder, but you will need to include the path to that folder inside every reference to that scripting file. That will be covered later on in this guide.\par
+\b\i\par
+\b0\i0 Each scripting file is broken down into individual lines. Each line containing a command that can cause the game to perform an action. These commands can do things like display text, and give and take items and credits. They can initiate combat, and even spawn a crate of goodies. Knowing how to use these commands are important, and using them well can make for some great quests, side missions and tutorials.\par
+\par
+Each line of data holds 1 COMMAND and up to 8 Values. Not every command requires all 8 values, although it is required that those values retain a NULL value if unused. The command itself will dictate what value slots are used. A spreadsheet of all the commands and all the value slots has been provided with this guide.  Here is an example of the basic format of each scripting line.\par
+\par
+\b SCRIPT ; ID ; LABEL ; COMMAND ; CHAIN ; val 1 ; val 2 ; val 3 ; val 4 ; val 5 ; val 6 ; val 7 ; val 8\par
+\b0 Each chunk of data is separated by a semi-colon \b ; \b0 you can create additional spacing by using TAB. All TABs are removed automatically with the script file is loaded.\par
+\b\par
+\b0 Let\rquote s examine this line, and break it down so that you understand what each slot is.\par
+\b SCRIPT \b0 - The first spot SCRIPT, tells the game engine we are dealing with a SCRIPT command. \par
+\b ID\b0  -  is the ID reference number of this command. This needs to be a unique number. They do not have to be in sequence.\par
+\b LABEL\b0 - The label can be anything you want to help you better keep track of what lines do what. There is a special label called START. The START value tells the game engine, that if we are grabbing random script lines from a file, during a random NPC chat encounter, only lines marked START will be chosen from the list.\par
+\b COMMAND \b0 - The Command mode tells the game engine what we are going to do with the values provided.\par
+\b CHAIN \b0 - Some commands do not wait for user input. The CHAIN slot is used to connect script together seamlessly, so that as one script finishes, another one begins.\par
+\b VAL 1-8\b0  - Each of the slots can contain various bits of data based on the command mode being used.\par
+\par
+\b\i\par
+\b0\i0 This section will cover in detail each COMMAND and all the values required.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\fs28 BASIC COMMANDS\fs20\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+TEXT\par
+\b0 The text command is simple, display some text and give the user an OK button with some text as well.\par
+\par
+Value 1: This is just some text to display\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1 Value 2: script_filename.txt>id#>Text to display on OK button.\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+OPTION\par
+\b0 The OPTION command will display some text, and then provide up to 3 options for the player to choose. Each option can take the player to another script, allowing for complex decisions and critical in game choices.\par
+\par
+Value 1: This is just some option text to display.\par
+Value 2: script_filename.txt>id#>Text for option 1.\par
+Value 3: script_filename.txt>id#>Text for option 2.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1 Value 4: script_filename.txt>id#>Text for option 3.\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+GET_ITEM\par
+\b0 The GET_ITEM command will allow you to give a player an ITEM from the ITEM database. These can be just about everything in the game. From Modules to Usables, This command will place the quantity of the specified item into the players ship\rquote s cargo bay.\par
+\par
+Value 1: This is just some option text to display.\par
+Value 2: ID number of the ITEM to give the player.\par
+Value 3: The QTY of the ITEM to give the player..\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If the QTY of ITEM exceeds the available space in the cargo bay, the size limits will be ignored allowing the Player to retain the items.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+GET_SKILL\par
+\b0 This command will give the player the specified skill. If the player already has this skill, nothing will happen. If the player does not have this skill, then the skill will begin training and the time it takes is specified in value_3. \par
+\par
+Value 1: This is just some skill text to display.\par
+Value 2: ID number of the SKILL to give the player.\par
+Value 3: Training Time in seconds (1-99999)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b GET_MEDAL\par
+\b0 This command will deliver a MEDAL to the player. The medal is specified using the ID number of the medal. This can be found in the MEDALS database file  located in MOD/medals/. Giving a Player a MEDAL should not be taken lightly. Make sure that you are providing a decent challenge to the Player, so that any MEDALS earned through the scripting quests will feel worth the effort.\par
+\par
+Value 1: This is just some text to display.\par
+Value 2: ID number of the MEDAL to give the player.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1 Value 3: script_filename.txt>id#>Text for the OK button.\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b TAKE_ITEM\par
+\b0 This command will remove the specified item from the players ship\rquote s cargo bay. This command does no check to see if the item exists before trying to remove it. It also will not check the qty of the item before removing it. If you want to check the item and it\rquote s qty first, use the CHECK_ITEM command first.\par
+\par
+Value 1: This is just some text to display.\par
+Value 2: ID number of the ITEM to take from the player.\par
+Value 3: QTY of the item to take. (Whole numbers only)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If you try to remove a QTY greater than what is in the cargo bay, all of that item is removed.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\fs28\par
+
+\pard\pagebb\widctlpar\sl276\slmult1 ADJUSTMENT COMMANDS\par
+
+\pard\widctlpar\sl276\slmult1\fs20 These commands allow you to ADJUST a number of Player variables.\par
+\par
+\b ADJ_CREDITS\par
+\b0 This command can be used to adjust a Player\rquote s CREDITS. This can be a positive or negative adjustment, and if the Player doesn\rquote t have enough credits, their credits will go into the negative, preventing them from purchasing anything until they recover from the debt. This command can be used in a number of different ways. With a little creativity, you will find that this command is one of the more important ones you will use.\par
+\par
+Value 1: This is just some text to display when the credits are adjusted.\par
+Value 2: Number of credits to adjust. + or - (example, 420 or -365) (Whole numbers only)\par
+Value 3: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: Credits can go negative, so be aware.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b ADJ_XP\par
+\b0 This command will adjust the Player\rquote s XP (experience points) by the specified number. This is great for rewarding players who have successfully completed a quest or task. Once the XP has been adjusted, calculations will be performed to determine whether or not the Player has gained a level. If a level is gained, any extra XP will carry over to be applied to the next level\'85 as normal.\par
+\par
+Value 1: This is just some text to display when the XP is adjusted.\par
+Value 2: Number of XPto adjust. + or - (example, 420 or -365)(Whole numbers only)\par
+Value 3: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If you award a player too many XP, they may raise multiple levels. This is not suggested. Keep the XP rewards as balanced as you can. Set the reward to match the task.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b ADJ_SP\par
+\b0 This command will adjust the Player\rquote s SKILL POINTS. Skill points are normally acquired when the Player raises a level. This command will bypass that and provide the Player with additional skill points as specified by Value 2. This command can also remove skill points from the Player. \par
+\par
+Value 1: This is just some text to display when the SKILL points are adjusted.\par
+Value 2: Number of Skill points to adjust. + or - (example, 3 or -1)(Whole numbers only)\par
+Value 3: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: Although there is not hard limit on the number of skill points a player can possess, the game engine will not allow negative skill points. Anything under 0 will be reset to 0.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+ADJ_LVL\par
+\b0 This is a very special command that should only be used on rare occasions. The ADJ_LVL command will bypass the entire leveling system and provide a player with an additional level(s). This will NOT provide the Player the usual SKILL POINTS and notification. It will silently adjust the Player\rquote s level. This adjustment can be a positive or negative number.\par
+\par
+Value 1: This is just some text to display when the LEVEL is adjusted.\par
+Value 2: Number of LEVELs to adjust. + or - (example, 1 or -1)(Whole numbers only)\par
+Value 3: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: You cannot adjust a player\rquote s level below 1, or above 100.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b ADJ_SHIP_STAT\par
+\b0 Ship Stats are one of 4 variables that represent the overall health and integrity of the ship. These variables are, SHIELD, ARMOR, ENERGY, and LIFESUPPORT. By choosing which variable to adjust, you can control the overall \lquote well being\rquote  of the ship. As usual, these adjustments can be positive or negative.\par
+Value 1: This is just some text to display when the LEVEL is adjusted.\par
+Value 2: What stat are we adjusting? (\b\i STATS: \b0\i0 SHIELD, ARMOR, ENERGY, LIFESUPPORT)\par
+Value 3: Number of points to adjust the stat. + or - (example, 100 or -100)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If you add more points than the max amount for that stat, overflow will be ignored. You will not be able to adjust a stat above its maximum or below 0.\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\b ADJ_FACTION\par
+\b0 This command will adjust the FACTION rating of a given faction. The faction is specified using the FACTION ID number. You can find all the ID numbers in the MOD/factions/faction_database.txt file. The adjustment value is in DECIMAL form. Not a whole number like most commands use.\par
+\par
+Value 1: This is just some text to display when the FACTION rating is adjusted.\par
+Value 2: FACTION ID number.\par
+Value 3: Number of points to adjust the faction rating. + or - (example, 0.05 or -0.1 ) (Decimal Only)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: Be wary of adjusting the faction ratings too much, they affect the game engine in a number of ways. It is good practice to keep all adjustments between -0.5. And 0.5.\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\b\par
+ADJ_SKILL_LVL\par
+\b0 This is a specialized command that will allow you to give or take levels on a trained skill. The skill you want to level adjust MUST already be trained. If the skill is not trained, this command will have no effect at all. Specify the SKILL ID number and the level you want to adjust. All the SKILL IDs can be found in the MOD/skills/skills_database.txt file.\par
+\par
+Value 1: This is just some text to display when the SKILL level is adjusted.\par
+Value 2: SKILL ID number.\par
+Value 3: Number of levels to adjust the skill. + or - (example, 1 or -1 ) (Whole Numbers Only)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: You cannot adjust a skill level below 1. If you try, the skill level will stay at level 1. There is no way to untrain a skill. The maximum level you will be able to raise a skill is to level 10. Any adjustment levels after 10 are discarded.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\fs28 BUY COMMANDS\par
+\fs20 BUY commands are very similar to the ADJUST commands, with the main difference being, the exchange of credits.\par
+\par
+\b BUY_ITEM\par
+\b0 The BUY_ITEM command will allow you to give a player an ITEM from the ITEM database for a specified number of credits. These can be just about everything in the game. From Modules to Usables, This command will place the quantity of the specified item into the players ship\rquote s cargo bay and remove the credits from their account..\par
+\par
+Value 1: This is just some option text to display.\par
+Value 2: ID number of the ITEM to give the player.\par
+Value 3: The QTY of the ITEM to give the player..\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+Value 5: Price (Whole Numbers Only)\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If the QTY of ITEM exceeds the available space in the cargo bay, the size limits will be ignored allowing the Player to retain the items. Having enough credits is NOT a requirement, The Player\rquote s credits will go negative if they do not have the required funds.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+BUY_SKILL\par
+\b0 This command will give the player the specified skill in exchange for credits. If the player already has this skill, nothing will happen. If the player does not have this skill, then the skill will begin training and the time it takes is specified in value_3. \par
+\par
+Value 1: This is just some skill text to display.\par
+Value 2: ID number of the SKILL to give the player.\par
+Value 3: Training Time in seconds (1-99999)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+Value 5: Price (Whole Numbers Only)\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: Having enough credits is NOT a requirement, The Player\rquote s credits will go negative if they do not have the required funds.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+BUY_SHIP_STAT\par
+\b0 Ship Stats are one of 4 variables that represent the overall health and integrity of the ship. These variables are, SHIELD, ARMOR, ENERGY, and LIFESUPPORT. By choosing which variable to adjust for credits, you can control the overall \lquote well being\rquote  of the ship. As usual, these adjustments can be positive or negative, although spending credits for a negative might not be too nice.\par
+Value 1: This is just some text to display when the LEVEL is adjusted.\par
+Value 2: What stat are we adjusting? (\b\i STATS: \b0\i0 SHIELD, ARMOR, ENERGY, LIFESUPPORT)\par
+Value 3: Number of points to adjust the stat. + or - (example, 100 or -100)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+Value 5: Price (Whole Numbers Only)\par
+\par
+\i Notes: If you add more points than the max amount for that stat, overflow will be ignored. You will not be able to adjust a stat above its maximum or below 0. Having enough credits is NOT a requirement, The Player\rquote s credits will go negative if they do not have the required funds.\i0\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\b\par
+BUY_FACTION\par
+\b0 This command will adjust the FACTION rating of a given faction. The faction is specified using the FACTION ID number. You can find all the ID numbers in the MOD/factions/faction_database.txt file. The adjustment value is in DECIMAL form. Not a whole number like most commands use. \par
+Value 1: This is just some text to display when the FACTION rating is adjusted.\par
+Value 2: FACTION ID number.\par
+Value 3: Number of points to adjust the faction rating. + or - (example, 0.05 or -0.1 ) (Decimal Only)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+Value 5: Price (Whole Numbers Only)\par
+\par
+\i Notes: Be wary of adjusting the faction ratings too much, they affect the game engine in a number of ways. It is good practice to keep all adjustments between -0.5. And 0.5. Having enough credits is NOT a requirement, The Player\rquote s credits will go negative if they do not have the required funds.\i0\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\par
+\b BUY_SKILL_LVL\par
+\b0 This is a specialized command that will allow you to give or take levels on a trained skill for credits. The skill you want to level adjust MUST already be trained. If the skill is not trained, this command will have no effect at all. Specify the SKILL ID number and the level you want to adjust. All the SKILL IDs can be found in the MOD/skills/skills_database.txt file. \i Having enough credits is NOT a requirement, The Player\rquote s credits will go negative if they do not have the required funds.\i0\par
+\par
+Value 1: This is just some text to display when the SKILL level is adjusted.\par
+Value 2: SKILL ID number.\par
+Value 3: Number of levels to adjust the skill. + or - (example, 1 or -1 ) (Whole Numbers Only)\par
+Value 4: script_filename.txt>id#>Text for the OK button.\par
+Value 5: Price (Whole Numbers Only)\par
+\par
+\i Notes: You cannot adjust a skill level below 1. If you try, the skill level will stay at level 1. There is no way to untrain a skill. The maximum level you will be able to raise a skill is to level 10. Any adjustment levels after 10 are discarded.\i0\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\par
+
+\pard\pagebb\widctlpar\sl276\slmult1\fs28 NPC COMMANDS\par
+
+\pard\widctlpar\sl276\slmult1\fs20 NPC commands are special commands that deal specifically with NPCs and their behaviours.\par
+\par
+\b NPC_CHAT\par
+\b0 When you fly up to an NPC, they may or may not have the desire to chat with you. This command will controls the chat timer. If you want to give an NPC a break from chat, you just add some time onto the chat timer. Once the chat timer runs out, you will be able to chat with that NPC again. \par
+\par
+Value 1: This is just some text to display.\par
+Value 2: Number of seconds to wait. (Whole Numbers Only)\par
+Value 3: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: NPC chat timers can reset sometimes when leaving a sector and returning back. This command is used to prevent chat spamming an NPC for some free benefit they are providing. This command will allow you to force a wait time before you are able to chat with them again.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b NPC_ATTACK\par
+\b0 Most NPCs are not aggressive until you decide to shoot at them. Hostile NPCs don\rquote t want to chat with you\'85 and if they do, they will initiate the communication. This command will allow you to turn on and off the HOSTILITY of the NPC. \par
+\par
+Value 1: This is just some text to display.\par
+Value 2: HOSTILE? True or False \par
+Value 3: script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: Hostile NPCs will eventually lose their aggressive stance. Warping out of a sector will usually clear the hostility. However, all aggressive actions adjust faction rating.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b NPC_RETREAT\par
+\b0 Sometimes they just want to go home\'85 That is what this command is for. If there is a station nearby, th NPC will head in for a dock. This command is great for removing NPCs from the playing field for a few minutes.\par
+\par
+Value 1: This is just some text to display before retreating.\par
+Value 2:  script_filename.txt>id#>Text for the OK button.\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If there are no stations available in the sector, the NPC will just pick a random point and retreat away from the combat.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\par
+
+\pard\pagebb\widctlpar\sl276\slmult1\fs28 SET / CHECK COMMANDS\par
+
+\pard\widctlpar\sl276\slmult1\fs20 These commands are some of the most important commands there are for Astrox. They will let you use conditions to determine what script to load next. Using these commands properly will allow you to create very complex quests and tasks. Take some time to learn them well.\par
+\par
+\b SET_VALUE\par
+\b0 Here it is, THE most important command in the scripting engine. This command is how you set a unique variable. Using SET_VALUE, you can tell the game engine that the pilot has triggered something, or completed a task or a step. It is very simple, and only requires 2 values. The first value is the variable name or label. The second value, is the VALUE of the variable.  You will notice that the SET_VALUE command does NOT require user input to continue. This allows for the command to run in the background. You will need to use the CHAIN variable to connect the next line of script to this command.\par
+\par
+This command is used in conjunction with CHECK_VALUE to determine whether or not a step in the task has been completed or not.\par
+\par
+Value 1: Variable Name (String of Characters and or numbers)\par
+Value 2: Variable Value (String of Characters and or numbers)\par
+\par
+\i Notes: Variable names and values can be either strings of characters, or whole numbers, or even decimal values.\i0\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\par
+\b\par
+CHECK_VALUE\par
+\b0 The CHECK_VALUE command is how you check on a variable you created using SET_VALUE. This command will check the condition you specify, and return TRUE or FALSE. If the command is TRUE, it will continue to filename and line id on Value 4, if it is FALSE, it will load Value 5. This creates the ability to branch your quest scripting apart based on whether or not the player has performed a task , step, action\'85. Or not.\par
+\par
+The OPERATOR is what you will use to check the value of the variable you previously defined using the SET_VALUE command. These operators are broken into 2 categories. Number operators, and Character operators.\par
+
+\pard\widctlpar\li720\sl276\slmult1\line\ul Number Operators:\par
+\ulnone Use these operators if the variable you set using set_value is a number, whole or decimal\par
+\b <\b0  : Less Than - is the variable from set_value less than Value 3\par
+\b >\b0  : Greater Than - is the variable from set_value greater than Value 3\par
+\b =\b0  : Equal to - is the variable from set_value exactly equal to Value 3\par
+\b !\b0  : Does not equal - is the variable from set_value NOT equal to Value 3\par
+\ul Character Operators:\par
+\ulnone Use these operators if the variable you set using set_value is a string of characters.\par
+\b IS\b0  : the variable from set_value is a string of characters that matches Value 3\par
+\b ISNOT\b0  : the variable from set_value is a string of characters that does NOT match Value 3\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+Value 1: Variable Name (Must match exactly what was defined in SET_VALUE)\par
+Value 2: OPERATOR ( < , > , = , ! , IS , ISNOT )\par
+Value 3 Check Value (This is the value we are checking against.)\par
+Value 4 If TRUE ( script_filename.txt>id# )\par
+Value 5 If FALSE( script_filename.txt>id# )\par
+\par
+\i Notes: This can feel a bit complicated at first, so here is an example of how CHECK_VALUE is used.\line First, we need to call SET_VALUE first to define us a variable that we will check on.\par
+\par
+\b SET_VALUE ; momos_var ; 420\par
+\b0 This will create a variable called \lquote momos_var\rquote  and it will place the number 420 inside that variable.\par
+Now, we can do a check on that variable, and if the check is TRUE, it will do one thing, and if it is FALSE, it will do something else.\par
+\par
+\b CHECK_VALUE ; momos_var ; > ; 350 ; this_file.txt>10 ; this_file.txt>20\par
+\b0 This command will call up \lquote momos_var\rquote , and check to see if the value of \lquote momos_var\rquote  420 > 350.\par
+Clearly 420 is greater than 350, so the engine will now load up the data in Value 4 (TRUE), which loads up \lquote this_file.txt\rquote  and script ID 10.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\b CHECK_STAT\par
+\b0 The CHECK_STAT command functions just like the CHECK_VALUE command, the only difference is that we are checking a pilot STATISTIC, and not a custom SET_VALUE variable. There is a list of pilot stats in the MOD/saves/player/player_data.txt file.\par
+\par
+Value 1: Stat ID (MOD/saves/player/player_data.txt)\par
+Value 2: OPERATOR ( < , > , = , ! )\par
+Value 3 Check Value (Whole numbers only)\par
+Value 4 If TRUE ( script_filename.txt>id# )\par
+Value 5 If FALSE( script_filename.txt>id# )\par
+\par
+\i Notes: This command is great for checking how far a player has progressed. You can check to see how many rocks they mined, or pirates they killed. All stats are accessible for checking.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\par
+\b CHECK_FACTION\par
+\b0 The CHECK_FACTION command functions like most other CHECK commands. This time, we are looking at faction ratings. Using this command will allow you to make sure a players faction rating with any given faction meets the requirements before proceeding.\par
+\par
+Value 1: Faction ID (MOD/factions/faction_database.txt)\par
+Value 2: OPERATOR ( < , > , = , ! )\par
+Value 3 Check Value (Whole numbers only)\par
+Value 4 If TRUE ( script_filename.txt>id# )\par
+Value 5 If FALSE( script_filename.txt>id# )\par
+\par
+\i Notes: Faction ratings swing from -10.0 to 10.0; negative 10 being the worst, and positive 10 being the absolute best..\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\par
+\b CHECK_PLAYER\par
+\b0 This command give you access to a few PLAYER variables that you can check. level, xp, next_level_xp, credits, skill_points, playtime, max_missions. \par
+\par
+Value 1: Variable ( level, xp, next_level_xp, credits, skill_points, playtime, max_missions )\par
+Value 2: OPERATOR ( < , > , = , ! )\par
+Value 3 Check Value (Whole numbers or Decimal)\par
+Value 4 If TRUE ( script_filename.txt>id# )\par
+Value 5 If FALSE( script_filename.txt>id# )\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: These are just some extra variables, but important ones to have access to. This command is great for limiting progression thru a task based on level. It is also great if you want to check if the player has enough credits before selling him something.\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\par
+\b CHECK_SHIP\par
+\b0 This command give you access to a few SHIP variables that you can check. shield, max_shield, armor, max_armor, energy, max_energy, cargo, max_cargo, active_slots, passive_slots, life_support, max_life_support, max_targets, ls_food, ls_water, ls_thermal, ls_waste\par
+\par
+Value 1: Variable ( shield, max_shield, armor, max_armor, energy, max_energy, cargo, max_cargo, active_slots, passive_slots, life_support, max_life_support, max_targets, ls_food, ls_water, ls_thermal, ls_waste )\par
+Value 2: OPERATOR ( < , > , = , ! )\par
+Value 3 Check Value (Whole numbers or Decimal)\par
+Value 4 If TRUE ( script_filename.txt>id# )\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1 Value 5 If FALSE( script_filename.txt>id# )\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\b CHECK_CARGO\par
+\b0 This command give you the ability to  check a Player\rquote s cargo bay to see if they have a specific quantity of particular item. The item ID and QTY are required to perform this check. \par
+\par
+Value 1: Item ID (MOD/items/items_database.txt)\par
+Value 2: OPERATOR ( < , > , = , ! )\par
+Value 3 Quantity  (Whole number)\par
+Value 4 If TRUE ( script_filename.txt>id# )\par
+Value 5 If FALSE( script_filename.txt>id# )\par
+\par
+\i Notes: You can use this check before trying to sell an item to a player that they already have.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\fs28 SPAWN COMMANDS\par
+\fs20 Spawn commands will do just that, spawn things. You can spawn just about everything in the game.\par
+\par
+\b SPAWN_NPC\par
+\b0 This command will allow you to spawn an NPC onto the map. The NPC will not be persistent, and will disappear when you warp out of the sector. You can load up an existing NPC ship file (MOD/ships_npc/) or you can create a brand new npc_ship.txt file and load that instead. The newly spawned NPC will not be aggressive, and will use it\rquote s own AI to determine its behavior. \par
+\par
+Value 1: NPC_ship_filename.txt ( MOD/ships_npc/ )\par
+Value 2:X Y Z position ( x.x#y.y#z.z ) (Example: 100.5#250.2#23.6 )\par
+Value 3 Faction ID  (MOD/factions/faction_database.txt)\par
+Value 4 NPC Level ( Whole numbers only  )\par
+Value 5 NPC Name ( Optional, leave empty for random name generation. )\par
+\par
+\i Notes: You can use this command for a variety of different scenarios, but don\rquote t over do this one too much, you can slow down the game if too many NPCs buzzing about.\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\b SPAWN_RAIDERS\par
+\b0 This command function much like the SPAWN_NPC command, except that these are the baddies, and are always hostile. You can spawn raiders fairly easily, it is killing them that is the hard part. This command will only spawn one type of raider ship, but you can adjust the quantity of raiders to be spawned.\i\par
+\i0\par
+Value 1: NPC_ship_filename.txt ( MOD/ships_npc/ )\par
+Value 2:X Y Z position ( x.x#y.y#z.z ) (Example: 100.5#250.2#23.6 )\par
+Value 3 Number of Raiders to spawn ( Whole numbers only )\par
+Value 4 NPC Level ( Whole numbers only  )\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: If you want to spawn a variety of different raiders, chain together a few of these commands with different ship files, and quantity numbers on each command.\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\b SPAWN_CRATE\par
+\b0 This command will spawn a CRATE onto the sector map. The crate will contain whatever you specify in Value 1. You can place the crate wherever you like using the xyz data stored in Value_2. Great little command for all kinds of tasks and quests.\par
+\par
+Value 1: ItemID#qty,ItemID#qty\par
+Value 2:X Y Z position ( x.x#y.y#z.z ) (Example: 100.5#250.2#23.6 )\par
+Value 3 Faction ID  (MOD/factions/faction_database.txt)\par
+Value 4 Crate owner\rquote s name ( String of characters  )\par
+\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\i Notes: none\par
+
+\pard\widctlpar\sl276\slmult1\i0\par
+\b SPAWN_RESOURCE\par
+\b0 This command will spawn a RESOURCE onto the sector map. The size of the resource can be set with Value 3, and a special name for the resource can be set in Value 4.\par
+\par
+Value 1: Resource ID\par
+Value 2:X Y Z position ( x.x#y.y#z.z ) (Example: 100.5#250.2#23.6 )\par
+Value 3 Resource Size ( Whole numbers or Decimal )\par
+Value 4 Resource special  name ( String of characters  )\par
+\par
+\i Notes: none\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\b\i0\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\b0\fs28 SPECIAL COMMANDS\par
+\fs20 These commands are special, Mommy told them so.\b\par
+\par
+WARP_TO_SECTOR\par
+\b0 Warp your ship and your fleet to a new map\par
+Value 1: mapname.txt\par
+Value 2:X Y Z position ( x.x#y.y#z.z ) (Example: 100.5#250.2#23.6 )\par
+\par
+\i Notes: none\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar \widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\sl276\slmult1\par
+\par
+\i0\par
+\b WARP_TO_POS\par
+\b0 Warp to a new position on the existing map\par
+\par
+Value 1:X Y Z position ( x.x#y.y#z.z ) (Example: 100.5#250.2#23.6 )\par
+\par
+\i Notes: none\i0\par
+\par
+\par
+}
+ 

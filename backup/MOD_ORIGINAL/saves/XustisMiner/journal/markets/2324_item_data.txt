@@ -1,0 +1,1 @@
+NPC;+PRICE;23;0;33814.04;Gek Mining;Alias Outpost;0h 0m 20s ;20.06906

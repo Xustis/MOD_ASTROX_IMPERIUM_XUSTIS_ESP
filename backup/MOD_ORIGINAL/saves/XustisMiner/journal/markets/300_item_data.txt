@@ -1,0 +1,2 @@
+NPC;+PRICE;5;0;65.09637;Desban;Ellisar;0h 0m 20s ;20.06906
+NPC;+PRICE;22;0;65.1562;Gek Mining;Alias Outpost;0h 0m 20s ;20.06906

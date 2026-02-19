@@ -1,0 +1,114 @@
+//; ASTROX IMPERIUM SHIP EDITOR
+//; Jace Masula / DragonSlayer 2023
+//; -------------------------------SHIP MAIN VARS ----------------------------------
+//; ---------------------------- Variable name, value ------------------------------
+<STATS>
+//; --- General Info ---
+SHIP_name;<SHIPNAME>
+SHIP_filename;<SHIPFILENAME>
+SHIP_class;Shuttle
+SHIP_type;Recon
+SHIP_skill_level;1
+SHIP_base_level;1
+SHIP_base_price;100
+SHIP_manufacturer;G.E.M.
+SHIP_manufacturer_icon;icon_gem.png
+SHIP_faction_id;0
+//; --- Main Stats ---
+SHIP_active_slots;2
+SHIP_passive_slots;2
+SHIP_base_drones;0
+SHIP_base_shield;281
+SHIP_base_armor;375
+SHIP_base_energy;375
+SHIP_base_cargo;330
+SHIP_base_lifesupport;1250
+//; --- Propulsion ---
+SHIP_base_mass;64
+SHIP_base_thrust;115
+SHIP_base_turn;0.81
+SHIP_base_engine_burn;0.19
+SHIP_base_speed;0
+//; --- Sensors ---
+SHIP_base_scan_max_targets;5
+SHIP_base_scan_speed;2.2
+SHIP_base_scan_pulserange;2400
+SHIP_base_scan_pulsespeed;2.3
+//; --- Resistance ---
+SHIP_impact_resistance;0
+SHIP_energy_resistance;0
+SHIP_explosive_resistance;0.06
+//; --- Regeneration ---
+SHIP_base_recharge;0.22
+SHIP_base_shield_recharge;0.55
+//; --- Bonuses ---
+SHIP_specials_raw;Mass#0.15
+//; --- Description ---
+SHIP_description;Enter ship description here.
+//; --- Editor ---
+SHIP_material_texture_a;default_main.png
+SHIP_material_texture_b;default_detail.png
+SHIP_material_texture_c;default_glow.png
+SHIP_material_color_a;1;1;1;1
+SHIP_material_color_b;1;1;1;1
+SHIP_engine_color;1;1;1;1
+//; --- Misc ---
+SHIP_shield;0
+SHIP_armor;0
+SHIP_energy;0
+SHIP_ls_food;0
+SHIP_ls_water;0
+SHIP_ls_thermal;0
+SHIP_ls_waste;0
+SHIP_ls_points;0
+SHIP_collider_x;1
+SHIP_collider_y;1
+SHIP_collider_z;1
+SHIP_prototype;False
+//; --- Merc stuff ---
+SHIP_owner;none
+SHIP_xp;0
+SHIP_next_level_xp;800
+SHIP_level;1
+SHIP_talent;Recon
+SHIP_loyalty;10
+SHIP_payroll;380
+//; --------------------------------- SHIP PARTS -----------------------------------
+//; --------------- ITEM,type,catID,pfID,xp,yp,zp,xr,yr,zr--------------------------
+<ITEM>
+ITEM;command_4;0; 24 ;0.00000;0.07900;0.00000;0.00000;0.00000;0.00000
+ITEM;command_4;0; 24 ;1.18500;-0.31700;-1.13300;0.00000;0.00000;255.00000
+ITEM;command_4;0; 24 ;-1.18472;-0.31700;-1.13300;0.00000;0.00000;105.00000
+ITEM;engine_3;0; 33 ;1.36700;-0.03600;-0.49900;0.00000;0.00000;345.00000
+ITEM;engine_3;0; 33 ;-1.36700;-0.03600;-0.49900;0.00000;0.00000;15.00000
+ITEM;engine_3;0; 33 ;-1.19534;-0.66835;-0.49900;0.00000;0.00000;195.00000
+ITEM;engine_3;0; 33 ;1.19500;-0.66800;-0.49900;0.00000;0.00000;165.00000
+ITEM;command_0;0; 20 ;0.00000;-0.70000;-0.75000;270.00000;180.00000;0.00000
+ITEM;wing_9;0; 74 ;-1.08500;-0.32000;0.44600;0.00000;0.00000;195.00000
+ITEM;wing_9;0; 74 ;1.08500;-0.32000;0.44600;0.00000;0.00000;345.00000
+ITEM;cargo_2;0; 52 ;1.27000;-0.38400;-0.95900;0.00000;0.00000;345.00000
+ITEM;cargo_2;0; 52 ;-1.27000;-0.38400;-0.95900;0.00000;0.00000;15.00000
+ITEM;cargo_2;0; 52 ;0.31500;-0.12200;-0.68500;15.00000;90.00000;0.00000
+ITEM;cargo_2;0; 52 ;-0.31500;-0.12201;-0.68534;15.00001;270.00000;0.00001
+ITEM;cargo_11;0; 40 ;0.00000;-0.40500;1.19000;0.00000;0.00000;0.00000
+ITEM;cargo_11;0; 40 ;0.00100;0.08900;1.12000;0.00000;0.00000;180.00000
+//; ----------------------------- SHIP CAMERA SLOTS --------------------------------
+//; -------------- PILOTCAM,name,SLOTid,model_id,xp,yp,zp,xr,yr,zr--------------------
+<PILOTCAM>
+PILOTCAM;pilot_cam; 5 ; 98 ;0.00000;0.17410;0.14035;0.00000;0.00000;0.00000
+//; ----------------------------- SHIP MODULE SLOTS --------------------------------
+//; -------------- MODSLOT,name,SLOTid,model_id, ammo_id,xp,yp,zp,xr,yr,zr----------
+<MODSLOT>
+MODSLOT;module_slot;1; 99 ;1.15700;-0.76600;-0.62700;0.00000;0.00000;165.00000
+MODSLOT;module_slot;2; 99 ;-1.15652;-0.76568;-0.62696;0.00000;0.00000;195.00000
+//; ----------------------------- SHIP MODULES --------------------------------------
+//; ----- MODULE,slot,module_id
+<MODULE>
+//; ----------------------------- SHIP CARGO -----------------------------------------
+//; ----- CARGO, qty, cargo_id
+<CARGO>
+//; ----------------------------- SHIP DRONES -----------------------------------------
+//; ----- DRONE, id, hp, energy
+<DRONE>
+
+

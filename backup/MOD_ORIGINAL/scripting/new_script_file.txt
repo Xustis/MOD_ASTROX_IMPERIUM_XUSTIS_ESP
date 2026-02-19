@@ -1,0 +1,4 @@
+//; ASTROX IMPERIUM : SCRIPTING EDITOR : JACE MASULA 2019
+// SCRIPT;	ID;	LABEL;	COMMAND;	CHAIN;	VALUE 1;	VALUE 2;	VALUE 3;	VALUE 4;	VALUE 5;	VALUE 6;	VALUE 7;	VALUE 8	
+// -------------------------------------------------------------------------------------------------------------------------------------
+SCRIPT;		0;				47692;				CHECK_CARGO;		0;				0;				-;				000;				new_script_file.txt>0>IF TRUE;				new_script_file.txt>0>IF FALSE;				null;				null;				null;		100.00;		-100.00

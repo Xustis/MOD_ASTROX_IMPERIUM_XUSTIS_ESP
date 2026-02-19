@@ -1,0 +1,2 @@
+//;LOG DATA FILE (Astrox Imperium)
+COMPLETED;Harvest;( Tutorial 1 ) Harvest yo...;6,480;61480;Biomate University;Void Starcross;0h 19m 20s 

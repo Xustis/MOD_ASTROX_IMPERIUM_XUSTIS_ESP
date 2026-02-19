@@ -1,0 +1,145 @@
+[s:30][c:yellow]Biomate University[/c][/s]
+Academic University
+Telyoupea Akpi
+Alpha
+[c:lime]Dock fee 0[/c]
+Timestamp: 1549.236
+<Station Services>
+
+[s:20][c:cyan]STATION ECONOMY[/c][/s]
+[c:lime]SUPPLY[/c]
+LED Lights
+Micro Processor
+Large Processor
+Motion Sensor
+Pressure Sensor
+Memory Chip
+Small Pump
+Small Heatsink
+Small Motor
+Copperi Cables
+Basic Shield Booster
+Improved Shield Booster
+Advanced Shield Booster
+Premium Shield Booster
+Prototype Shield Booster
+Basic Shield Generator
+Improved Shield Generator
+Advanced Shield Generator
+Premium Shield Generator
+Prototype Shield Generator
+[c:orange]DEMAND[/c]
+Mechanical Tools
+Assembly Tools
+Medical Instruments
+Calibration Tools
+
+[s:20][c:cyan]SERVICES[/c][/s]
+Lounge
+Market
+Refinery
+Ship Garage
+University
+Ship Hangar
+Storage
+Fabricator
+Mission Contracts
+Offices
+
+
+<Station Market Orders>
+
+
+<Station Market Items>
+Visit station market to update prices.
+
+
+<Station University Skills>
+Projectile Basic Operation
+Laser Basic Operation
+Beam Basic Operation
+Launcher Basic Operation
+Torpedo Basic Operation
+Miner Basic Operation
+Escort Ship Operation
+Utility Ship Operation
+Frigate Ship Operation
+Cruiser Ship Operation
+Carrier Ship Operation
+Destroyer Ship Operation
+Battlecruiser Ship Operation
+Dreadnought Ship Operation
+Ship Thruster Systems
+Ship Cargo Stacker
+Max Mission Contracts
+Ship Energy Regeneration
+Ship Energy Systems
+Fleet Commander
+Drone Operation
+Drone Command Systems
+Drone Combat Weapons
+Drone Mining Lasers
+Drone Repair Systems
+Drone Defensive Programing
+Drone Range Signal
+Drone Energy Systems
+Drone Armor Mechanic
+Drone Cargo Mechanic
+Drone Thruster Systems
+Structure Build operation
+Structure Warehouse Management
+Structure Accountant
+Structure Prospector
+Structure Engineer
+Ship Shield Regeneration
+
+
+<Station Missions>
+[c:lime]SCAN[/c]
+Find the target <color='yellow'>Public Energy Generator</color> structure in <color='cyan'>Starfort Ramos</color>, scan, and return to OmniTrust in <color='cyan'>Ponze</color>
+
+[c:lime]HARVEST[/c]
+Mine <color='yellow'>Special Lokken Ore</color> in <color='cyan'>Jala</color> and return with <color='yellow'>88</color> to Star Shepards Hub in <color='cyan'>Temple Gates</color>
+
+[c:lime]RECOVER[/c]
+Recover a light quantity of <color='yellow'>3</color> <color='yellow'>Pulse x1 Lasers</color> in <color='cyan'>Felishar</color>, and return to Starbase Corporate Center in <color='cyan'>Void Starcross</color>
+
+[c:lime]HARVEST[/c]
+Mine <color='yellow'>Special Adamyte Ore</color> in <color='cyan'>Void Starcross</color> and return with <color='yellow'>114</color> to Star Shepards Hub in <color='cyan'>Temple Gates</color>
+
+
+
+<Station Ships>
+RS-1 Translator / Shuttle    (Recon)
+RE-1 Integrator / Escort    (Recon)
+RE-2 Harmonizer / Escort    (Recon)
+RU-1 Curator / Utility    (Recon)
+RU-2 Conservator / Utility    (Recon)
+RF-1 Assimilator / Frigate    (Recon)
+
+
+<Station Offices>
+(Tutorial Office) Camera Basics 
+[c:grey](Ratamaq Guru)[/c]
+
+(Tutorial Office) Navigation Basics 
+[c:grey](Arji Darn)[/c]
+
+(Tutorial Office) Life Support Basics 
+[c:grey](Carter Burke)[/c]
+
+(Tutorial Office) Introduction 
+[c:grey](Jessa Din)[/c]
+
+(Tutorial Office) Basic Combat 
+[c:grey](Fredric Din)[/c]
+
+(Tutorial Office) Basic Drones 
+[c:grey](Daniel Traek)[/c]
+
+(Tutorial Office) Basic Fleet Command 
+[c:grey](Jacob Salis)[/c]
+
+(Tutorial Office) Wormhole Basics 
+[c:grey](Darius Ghent)[/c]
+
