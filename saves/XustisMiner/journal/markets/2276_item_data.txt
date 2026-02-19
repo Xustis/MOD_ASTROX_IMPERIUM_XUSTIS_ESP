@@ -1,0 +1,1 @@
+NPC;+PRICE;34;0;87460.95;ValueStar;Hunu;0h 0m 20s ;20.06906

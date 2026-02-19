@@ -1,0 +1,1 @@
+NPC;+PRICE;18;0;47217.05;Desban;Ellisar;0h 0m 20s ;20.06906

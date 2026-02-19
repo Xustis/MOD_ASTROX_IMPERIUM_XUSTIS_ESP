@@ -1,0 +1,1 @@
+NPC;+QTY;57;8;5181.638;Dreamstar;Gendaria;0h 0m 7s ;7.017302

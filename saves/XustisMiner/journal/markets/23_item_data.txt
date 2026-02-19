@@ -1,0 +1,2 @@
+NPC;+PRICE;337;0;683.3924;Gek Mining;Alias Outpost;0h 0m 20s ;20.06906
+NPC;+PRICE;69;0;571.1678;ValueStar;Hunu;0h 0m 20s ;20.06906

@@ -1,0 +1,3 @@
+NPC;+QTY;2083;2063;71.56738;Vita Assembly;Capital Void;0h 0m 7s ;7.017302
+NPC;+QTY;2011;1863;64.34825;Kinetics Manufacturing;Void Spooflarnia;0h 0m 7s ;7.017302
+NPC;+QTY;1684;1269;53.02938;Vo Industries;Brimstone;0h 0m 7s ;7.017302
