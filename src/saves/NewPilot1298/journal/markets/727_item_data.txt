@@ -1,2 +1,0 @@
-NPC;+QTY;62;7;18806.25;Vita Assembly;Capital Void;0h 0m 7s ;7.017302
-NPC;+QTY;163;8;10087.5;Kinetics Manufacturing;Void Spooflarnia;0h 0m 7s ;7.017302

@@ -1,2 +1,0 @@
-NPC;+PRICE;871;0;23.31228;Desban;Ellisar;0h 0m 20s ;20.06906
-NPC;+PRICE;66;0;32.20368;ValueStar;Hunu;0h 0m 20s ;20.06906

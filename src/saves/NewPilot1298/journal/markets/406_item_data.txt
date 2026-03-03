@@ -1,2 +1,0 @@
-NPC;+QTY;544;516;27.70625;Vita Assembly;Capital Void;0h 0m 7s ;7.017302
-NPC;+QTY;857;828;29.2175;Dreamstar;Gendaria;0h 0m 7s ;7.017302
