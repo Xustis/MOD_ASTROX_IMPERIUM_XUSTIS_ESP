@@ -1,1 +1,2 @@
+CARGO BAY - Bodega
 Ore Harvester - Recolector de mineral. Podria ser tambien Unidad de extracción.
